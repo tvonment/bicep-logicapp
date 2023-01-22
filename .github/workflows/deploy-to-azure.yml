@@ -6,14 +6,15 @@ name: deploy-to-azure
 on:
   workflow_dispatch:
     inputs:
-      name: appName
-      default: logicapp-cicd
-    inputs:
-      name: env
-      default: test
-      values:
-      - test
-      - prod 
+      appName:
+        type: string
+        default: logicapp-cicd
+      env:
+        type: string      
+        default: test
+        values:
+        - test
+        - prod 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

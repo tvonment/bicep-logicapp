@@ -1,0 +1,171 @@
+{
+  "accessControl": null,
+  "accessEndpoint": "https://prod-20.switzerlandnorth.logic.azure.com:443/workflows/b5c2e6842a0a48618d554395fe4c680c",
+  "changedTime": "2023-01-22T15:45:10.055738+00:00",
+  "createdTime": "2023-01-16T10:44:30.219953+00:00",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "Create_item": {
+        "inputs": {
+          "body": {
+            "Title": "helloworld"
+          },
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['sharepointonline']['connectionId']"
+            }
+          },
+          "method": "post",
+          "path": "/datasets/@{encodeURIComponent(encodeURIComponent('https://corpsoft1.sharepoint.com/teams/ThomassEgoTeam'))}/tables/@{encodeURIComponent(encodeURIComponent('768fee44-916c-49a3-85d8-003e165ee480'))}/items"
+        },
+        "runAfter": {
+          "HTTP": [
+            "Succeeded"
+          ]
+        },
+        "type": "ApiConnection"
+      },
+      "HTTP": {
+        "inputs": {
+          "method": "GET",
+          "uri": "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
+        },
+        "runAfter": {},
+        "type": "Http"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "parameters": {
+      "$connections": {
+        "defaultValue": {},
+        "type": "Object"
+      }
+    },
+    "triggers": {
+      "Recurrence": {
+        "evaluatedRecurrence": {
+          "frequency": "Minute",
+          "interval": 3
+        },
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 3
+        },
+        "type": "Recurrence"
+      }
+    }
+  },
+  "endpointsConfiguration": {
+    "connector": {
+      "accessEndpointIpAddresses": null,
+      "outgoingIpAddresses": [
+        {
+          "address": "51.103.142.22"
+        },
+        {
+          "address": "51.107.86.217"
+        },
+        {
+          "address": "51.107.59.16/28"
+        },
+        {
+          "address": "51.107.60.224/27"
+        },
+        {
+          "address": "51.107.246.112/28"
+        },
+        {
+          "address": "51.107.246.128/27"
+        }
+      ]
+    },
+    "workflow": {
+      "accessEndpointIpAddresses": [
+        {
+          "address": "51.103.128.52"
+        },
+        {
+          "address": "51.103.132.236"
+        },
+        {
+          "address": "51.103.134.138"
+        },
+        {
+          "address": "51.103.136.209"
+        },
+        {
+          "address": "20.203.230.170"
+        },
+        {
+          "address": "20.203.227.226"
+        }
+      ],
+      "outgoingIpAddresses": [
+        {
+          "address": "51.103.137.79"
+        },
+        {
+          "address": "51.103.135.51"
+        },
+        {
+          "address": "51.103.139.122"
+        },
+        {
+          "address": "51.103.134.69"
+        },
+        {
+          "address": "51.103.138.96"
+        },
+        {
+          "address": "51.103.138.28"
+        },
+        {
+          "address": "51.103.136.37"
+        },
+        {
+          "address": "51.103.136.210"
+        },
+        {
+          "address": "20.203.230.58"
+        },
+        {
+          "address": "20.203.229.127"
+        },
+        {
+          "address": "20.203.224.37"
+        },
+        {
+          "address": "20.203.225.242"
+        }
+      ]
+    }
+  },
+  "id": "/subscriptions/abe489da-01c9-4068-b7d5-1cd8156d601d/resourceGroups/lapp-test/providers/Microsoft.Logic/workflows/lapp-test-cicd",
+  "integrationAccount": null,
+  "integrationServiceEnvironment": null,
+  "location": "switzerlandnorth",
+  "name": "lapp-test-cicd",
+  "parameters": {
+    "$connections": {
+      "description": null,
+      "metadata": null,
+      "type": null,
+      "value": {
+        "sharepointonline": {
+          "connectionId": "/subscriptions/abe489da-01c9-4068-b7d5-1cd8156d601d/resourceGroups/lapp-test/providers/Microsoft.Web/connections/sharepointonline",
+          "connectionName": "sharepointonline",
+          "id": "/subscriptions/abe489da-01c9-4068-b7d5-1cd8156d601d/providers/Microsoft.Web/locations/switzerlandnorth/managedApis/sharepointonline"
+        }
+      }
+    }
+  },
+  "provisioningState": "Succeeded",
+  "resourceGroup": "lapp-test",
+  "sku": null,
+  "state": "Enabled",
+  "tags": null,
+  "type": "Microsoft.Logic/workflows",
+  "version": "08585272045754311401"
+}

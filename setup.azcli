@@ -1,0 +1,1 @@
+(az logic workflow show --resource-group "lapp-test" --name "lapp-test-cicd" -o json) > app/definition.json

@@ -8,7 +8,7 @@ param prefix string = 'logicapp'
 
 param envs array = [
   {
-    name: 'test'
+    name: 'test2'
   }
 ]
 
@@ -22,7 +22,7 @@ module apps 'modules/logicapp.bicep' = [for env in envs: {
   name: '${env.name}-app-${uniqueString('rg-${env.name}-${prefix}')}'
   dependsOn: rGroups
   params: {
-    appName: 'testapp'
+    appName: 'testapp2'
     location: location
   }
 }]

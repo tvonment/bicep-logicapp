@@ -1,6 +1,7 @@
 param appName string
 param location string
-param apiId string = '/subscriptions/${subscription().id}/providers/Microsoft.Web/locations/switzerlandnorth/managedApis/sharepointonline'
+param subId string
+param apiId string = '/subscriptions/${subId}/providers/Microsoft.Web/locations/switzerlandnorth/managedApis/sharepointonline'
 var logicAppDefinition = json(loadTextContent('../logicapp/definition.json'))
 
 resource spo 'Microsoft.Web/connections@2016-06-01' = {

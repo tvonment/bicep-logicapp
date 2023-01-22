@@ -38,5 +38,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: rg-${{ inputs.env }}-logicapp
         template: ./main.bicep
-        parameters: 'env=${{ inputs.env }} appName=${{ inputs.appName }}'
+        parameters: 'env=${{ inputs.env }} appName=${{ inputs.appName }} subId=${{ secrets.AZURE_SUBSCRIPTION }}'
         failOnStdErr: false

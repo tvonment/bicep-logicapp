@@ -1,28 +1,14 @@
-targetScope = 'subscription'
-
 @description('The Azure region into which the resources should be deployed.')
-param location string = deployment().location
+param location string = resourceGroup().location
 
 @description('The Prefix for the Resources')
-param prefix string = 'logicapp'
+param env string = 'test'
+param appName string = 'logicapp'
 
-param envs array = [
-  {
-    name: 'test2'
-  }
-]
-
-resource rGroups 'Microsoft.Resources/resourceGroups@2021-04-01' = [for env in envs: {
-  name: 'rg-${env.name}-${prefix}'
-  location: location
-}]
-
-module apps 'modules/logicapp.bicep' = [for env in envs: {
-  scope: resourceGroup('rg-${env.name}-${prefix}')
-  name: '${env.name}-app-${uniqueString('rg-${env.name}-${prefix}')}'
-  dependsOn: rGroups
+module apps 'modules/logicapp.bicep' = {
+  name: '${env}-${appName}-deployment'
   params: {
-    appName: 'testapp2'
+    appName: '${env}-${appName}'
     location: location
   }
-}]
+}
